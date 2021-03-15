@@ -1,3 +1,5 @@
+//ENGINEER:BETOUNIS IOANNIS
+
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
@@ -12,10 +14,10 @@ int ygrasia = 50;
 
 void setup()
 {
-  pinMode (2,INPUT_PULLUP); // koumpi gia to bhma toy 8ermostath
-  pinMode (4,INPUT_PULLUP); // koumpi gia to bhma ths ygrasias
-  pinMode (12,INPUT_PULLUP); // koympi gia anebasma epi8ymhths 8ermokrasias
-  pinMode (13,INPUT_PULLUP); // koympi gia katebasma epi8ymhths 8ermokrasias 
+  pinMode (2,INPUT_PULLUP); 
+  pinMode (4,INPUT_PULLUP); 
+  pinMode (12,INPUT_PULLUP); 
+  pinMode (13,INPUT_PULLUP); 
   pinMode (rele, OUTPUT); //relay pin
   digitalWrite(rele, HIGH);
   lcd.init();
@@ -41,14 +43,14 @@ void loop()
   float ther = DHT.temperature; // for correction
   float ygr = DHT.humidity; // for correction    
 
-    if (setsens > 2.1) setsens = setsens - 2.0; //ka8orismos eyes8hsias 8ermokrasias
-    else if (tempstep == HIGH) setsens = setsens + 0.1; //ka8orismos eyes8hsias 8ermokrasias
+    if (setsens > 2.1) setsens = setsens - 2.0; 
+    else if (tempstep == HIGH) setsens = setsens + 0.1; 
 
-    if (ygrasia > 100) ygrasia = ygrasia - 95; //ka8orismos eyes8hsias ygrasias
-    else if (hmstep == HIGH) ygrasia = ygrasia + 5; //ka8orismos eyes8hsias ygrasias
+    if (ygrasia > 100) ygrasia = ygrasia - 95; 
+    else if (hmstep == HIGH) ygrasia = ygrasia + 5; 
 
-    if (thermsyn == HIGH) wrtemp = wrtemp + 1; //ka8orismos pros ta epanw epi8ymhths 8ermokrasias swmatiou
-    else if (thermplin == HIGH) wrtemp = wrtemp - 1; //ka8orismos pros ta katw epi8ymhths 8ermokrasias swmatiou
+    if (thermsyn == HIGH) wrtemp = wrtemp + 1; 
+    else if (thermplin == HIGH) wrtemp = wrtemp - 1; 
     
     lcd.begin(20, 4);
     lcd.backlight();
